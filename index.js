@@ -1,13 +1,19 @@
 /**
  * Thotiana Discord Bot 
  * @author A1FA
+ * @author Khaled
  */
- const { Intents, message, Client } = require ('discord.js')
 
- const client = new Client({
-     partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-     intents: Object.keys(Intents.FLAGS)
- });
+import  { Intents, Client, MessageEmbed, message } from "discord.js";
+
+//Import values from config file
+import cfg from "./config/config.json" assert {type: "json"};
+const testGuild = cfg.testGuild;
+const devID1 = cfg.devID1;
+const devID2 = cfg.devID2;
+const defaultPrefix = cfg.defaultPrefix;
+const disableEveryone = cfg.disableEveryone;
+const token = cfg.token;
 
 client.on('ready', () => {
     console.log('Thotiana Online')
@@ -17,8 +23,6 @@ client.on('ready', () => {
     console.log(`${guild.name} | ${guild.id}`);
   })
 });
-
-const prefix = "!!"
 
 const arrCommands = [ "help", "ban", "kick", "mute", "say" ];
 
