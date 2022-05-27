@@ -1,1 +1,7 @@
-
+{
+    "testGuild": "978952893153566742",
+    "devID1": "978411947055796245",
+    "devID2": "875186460771369000",
+    "defaultPrefix": "$",
+    "disableEveryone": "false"
+}
