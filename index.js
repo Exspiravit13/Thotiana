@@ -22,7 +22,10 @@ const prefix = "!!"
 
 const arrCommands = [ "help", "ban", "kick", "mute", "say" ];
 
+const responses =["","","","","","","","","","","",];
+
 runCommands
+resCommands
 
 function runCommands() {
     for (let i = 0; i < arrCommands.length; i++)
@@ -115,4 +118,39 @@ client.on('messageCreate', (message) => {
         })
     }
 })
+
+
+//empty commands start
+
+function resCommands() {
+    for (let i = 0; i <responses.length; i++)
+        if (message.content.startsWith(prefix + responses[i]))
+            switch(i) {
+                case 0:message.reply()
+                break;
+                case 1:message.reply()
+                break;
+                case 2:message.reply()
+                break;
+                case 3:message.reply()
+                break;
+                case 4:message.reply() 
+                break;
+                case 5:message.reply()
+                break;
+                case 6:message.reply()
+                break;
+                case 7:message.reply()
+                break;
+                case 8:message.reply()
+                break;
+                case 9:message.reply()
+                break;
+                case 10:message.reply()
+                break;              
+            }
+}
+
+//empty commands end
+
 client.login("OTc2NzgxOTIxMDIxNDgxMDEw.Gj6t1t.0TQj3UDJlu6NI0HLwPrQw8nUc0H15E1mXNolhI")
