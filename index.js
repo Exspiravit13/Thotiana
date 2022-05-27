@@ -4,9 +4,8 @@
  * @author Khaled
  */
 
-import  { Intents, Client, MessageEmbed, message } from "discord.js";
+import  { Intents, Client, MessageEmbed, Message } from "discord.js";
 
-//Import values from config file
 import cfg from "./config/config.json" assert {type: "json"};
 const testGuild = cfg.testGuild;
 const devID1 = cfg.devID1;
@@ -14,6 +13,11 @@ const devID2 = cfg.devID2;
 const defaultPrefix = cfg.defaultPrefix;
 const disableEveryone = cfg.disableEveryone;
 const token = cfg.token;
+
+ const client = new Client({
+     partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+     intents: Object.keys(Intents.FLAGS)
+ });
 
 client.on('ready', () => {
     console.log('Thotiana Online')
@@ -24,12 +28,27 @@ client.on('ready', () => {
   })
 });
 
-const arrCommands = [ "help", "ban", "kick", "mute", "say" ];
 
-const responses =["","","","","","","","","","","",];
+const arrCommands = [ "help", "ban", "kick", "mute", "say", ];
 
-runCommands
-resCommands
+client.on('messageCreate', (message) => {
+    if (message.content == 'kys') {
+        message.reply({content: 'you first'})
+    } else if (message.content == `beggar`) {
+        message.reply({content: `is a cocksucking bitch ass gay boy`})
+    } else if (message.content == `shut up`) {
+        message.reply({content: `kys`})
+    } else if (message.content == `head`) {
+        message.reply({content: `I love giving head!`})
+    } else if (message.content == `fuck`) {
+        message.reply({content: `me!`})
+    } else if (message.content == `slut`) {
+        message.reply({content: `Only for you ;)`})
+    } else if (message.content == `smd`) {
+        message.reply({content: `Cum here`})
+    }
+})
+
 
 function runCommands() {
     for (let i = 0; i < arrCommands.length; i++)
@@ -60,101 +79,6 @@ function banMember(message,) {
         }
 };
 
-client.on('messageCreate', (message) => {
-    if (message.content === prefix + 'help') {
-        message.reply({content: 'you first'
-        })
-    }
-})
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'kys') {
-        message.reply({content: 'you first'
-        })
-    }
-})
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'beggar') {
-        message.reply({content: 'is a cocksucking bitch ass gay boy'
-        })
-    }
-})
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'shut up') {
-        message.reply({content: 'kys'
-        })
-    }
-})
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'fuck') {
-        message.reply({content: 'me'
-        })
-    }
-})
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'head') {
-        message.reply({content: 'I love giving head!'
-        })
-    }
-})
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'ding') {
-        message.reply({content: 'dong'
-        })
-    }
-});
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'slut') {
-        message.reply({content: 'only for you ;)'
-        })
-    }
-})
-
-client.on('messageCreate', (message) => {
-    if (message.content === 'smd') {
-        message.reply({content: 'cum here'
-        })
-    }
-})
 
 
-//empty commands start
-
-function resCommands() {
-    for (let i = 0; i <responses.length; i++)
-        if (message.content.startsWith(prefix + responses[i]))
-            switch(i) {
-                case 0:message.reply()
-                break;
-                case 1:message.reply()
-                break;
-                case 2:message.reply()
-                break;
-                case 3:message.reply()
-                break;
-                case 4:message.reply() 
-                break;
-                case 5:message.reply()
-                break;
-                case 6:message.reply()
-                break;
-                case 7:message.reply()
-                break;
-                case 8:message.reply()
-                break;
-                case 9:message.reply()
-                break;
-                case 10:message.reply()
-                break;              
-            }
-}
-
-//empty commands end
-
-client.login("OTc2NzgxOTIxMDIxNDgxMDEw.Gj6t1t.0TQj3UDJlu6NI0HLwPrQw8nUc0H15E1mXNolhI")
+client.login(token)
