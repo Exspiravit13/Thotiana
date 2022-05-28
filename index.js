@@ -47,12 +47,12 @@ client.on("messageCreate", (message) => {
     .setAuthor ({name: `Thotiana`, iconURL: `https://cdn.discordapp.com/attachments/955916659019890762/980077322910716005/Thotiana.jpg`})
     .setThumbnail (`https://cdn.discordapp.com/attachments/955916659019890762/980077322910716005/Thotiana.jpg`)
     .addFields(
-       { name:`**Commands**`, 
-       value: `${defaultPrefix}say *your message here*` }
-    
+       { name:`**Commands**`, value: `${defaultPrefix}say *your message here*` },
+       { name:`**Keywords I respond to!**`, value: `head \n slut \n smd \n fuck` }
     )
+    .setFooter ({text: ``})
 
-    const arrCommands = [ "help", "say", ];
+    const arrCommands = [ "help", "say", "wyr", "sop",  ];
 
     if (message.content.startsWith(defaultPrefix)) {
         runCommands()
@@ -64,7 +64,12 @@ client.on("messageCreate", (message) => {
                 switch(i) {
                     case 0:message.channel.send({embeds: [help]})
                     break;
-                    case 1:say(args)
+                    case 1:say()
+                    break;
+                    case 2:wouldYouRather();
+                    break;
+                    case 3:smashOrPass();
+                    break;
      
                 }
     }
