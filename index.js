@@ -34,6 +34,8 @@ client.on('ready', () => {
 });
 
 client.on("messageCreate", (message) => {
+    if (message.author.bot) return;
+
 //Args
     let args = message.content.split(" ").slice(1);
     var args1 = args[0]; // Amount
@@ -52,7 +54,7 @@ client.on("messageCreate", (message) => {
     )
     .setFooter ({text: ``})
 
-    const arrCommands = [ "help", "say", "wyr", "sop",  ];
+    const arrCommands = [ "help", "say", "wyr", "sop", "cp",  ];
 
     if (message.content.startsWith(defaultPrefix)) {
         runCommands()
@@ -70,34 +72,40 @@ client.on("messageCreate", (message) => {
                     break;
                     case 3:smashOrPass();
                     break;
+                    case 4:checkPrefix();
+                    break;
      
                 }
     }
 
-
+let capsT=0 
     if (message.content == 'kys') {
-        message.reply({content: 'you first'})
+        message.reply({content: 'you first'});  
     } else if (message.content == `beggar`) {
-        message.reply({content: `is a cocksucking bitch ass gay boy`})
+        message.reply({content: `is a cocksucking bitch ass gay boy`});
     } else if (message.content == `shut up`) {
-        message.reply({content: `kys`})
+        message.reply({content: `kys`});
     } else if (message.content == `head`) {
-        message.reply({content: `I love giving head!`})
+        message.reply({content: `I love giving head!`});
     } else if (message.content == `fuck`) {
-        message.reply({content: `me!`})
+        message.reply({content: `me!`});
     } else if (message.content == `slut`) {
-        message.reply({content: `Only for you ;)`})
+        message.reply({content: `Only for you ;)`});
     } else if (message.content == `smd`) {
-        message.reply({content: `Cum here`})
+        message.reply({content: `Cum here`});
     }
+    
     
     function say() {
         let sayMessage = message.content;
         let repeat = sayMessage.split(' ').slice(1).join(' ');
         message.delete();
         message.channel.send(repeat);
-    }
-})
+    };
 
+    function checkPrefix() {
+        message.channel.send(`My prefix is currently ${defaultPrefix}`);
+    };
+});
 
 client.login(token)
