@@ -96,11 +96,17 @@ let capsT=0
     }
     
     
+    /**
+     * @param {string} repeat Message to be repeated 
+     */
     function say() {
-        let sayMessage = message.content;
-        let repeat = sayMessage.split(' ').slice(1).join(' ');
+        let repeat = message.content.split(' ').slice(1).join(' ');
+        if (repeat.length == 0) {
+            message.reply({content: `Please provide a message to be said`});
+        } else {
         message.delete();
         message.channel.send(repeat);
+        };
     };
 
     function checkPrefix() {
